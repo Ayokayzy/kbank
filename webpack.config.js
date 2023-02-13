@@ -110,10 +110,12 @@ module.exports = {
     proxy: {
       "/api": {
         target: "http://127.0.0.1:4943",
+        // target: "localhost:4943",
         changeOrigin: true,
-        pathRewrite: {
-          "^/api": "/api",
-        },
+        rewrite: (path) => path.replace(/^\/api/, "/api"),
+      //   pathRewrite: {
+      //     "^/api": "/api",
+      //   },
       },
     },
     static: path.resolve(__dirname, "src", frontendDirectory, "assets"),
